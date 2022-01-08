@@ -9,7 +9,7 @@ import com.ishanvaghani.moviefy.model.*
 import com.ishanvaghani.moviefy.netwrok.ApiBuilder
 import com.ishanvaghani.moviefy.netwrok.MovieApi
 import com.ishanvaghani.moviefy.pagination.*
-import com.ishanvaghani.moviefy.utils.showToast
+import com.ishanvaghani.moviefy.utils.showErrorToast
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -35,12 +35,12 @@ class TvShowRepository @Inject constructor(
             if (response.isSuccessful) {
                 tvAiringToday = response.body()!!.results
             } else {
-                showToast(context)
+                showErrorToast(context)
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
-            showToast(context)
+            showErrorToast(context)
         }
     }
 
@@ -50,12 +50,12 @@ class TvShowRepository @Inject constructor(
             if (response.isSuccessful) {
                 tvShowVideos = response.body()!!.results
             } else {
-                showToast(context)
+                showErrorToast(context)
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
-            showToast(context)
+            showErrorToast(context)
         }
     }
 
@@ -65,12 +65,12 @@ class TvShowRepository @Inject constructor(
             if (response.isSuccessful) {
                 tvShowDetails = response.body()!!
             } else {
-                showToast(context)
+                showErrorToast(context)
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
-            showToast(context)
+            showErrorToast(context)
         }
     }
 
@@ -80,12 +80,12 @@ class TvShowRepository @Inject constructor(
             if (response.isSuccessful) {
                 tvShowGenres = response.body()!!.genres
             } else {
-                showToast(context)
+                showErrorToast(context)
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
-            showToast(context)
+            showErrorToast(context)
         }
     }
 
@@ -98,9 +98,9 @@ class TvShowRepository @Inject constructor(
                 Log.d("tvShowRepo", response.errorBody()!!.string())
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
-            showToast(context)
+            showErrorToast(context)
         }
     }
 

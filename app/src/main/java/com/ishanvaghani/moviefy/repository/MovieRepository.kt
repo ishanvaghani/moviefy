@@ -9,7 +9,7 @@ import com.ishanvaghani.moviefy.model.*
 import com.ishanvaghani.moviefy.netwrok.ApiBuilder
 import com.ishanvaghani.moviefy.netwrok.MovieApi
 import com.ishanvaghani.moviefy.pagination.*
-import com.ishanvaghani.moviefy.utils.showToast
+import com.ishanvaghani.moviefy.utils.showErrorToast
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -35,13 +35,13 @@ class MovieRepository @Inject constructor(
             if (response.isSuccessful) {
                 movieDetails = response.body()!!
             } else {
-                showToast(context)
+                showErrorToast(context)
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
             withContext(Dispatchers.Main) {
-                showToast(context)
+                showErrorToast(context)
             }
         }
     }
@@ -52,12 +52,12 @@ class MovieRepository @Inject constructor(
             if (response.isSuccessful) {
                 nowPlayingMovies = response.body()!!.results
             } else {
-                showToast(context)
+                showErrorToast(context)
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
-            showToast(context)
+            showErrorToast(context)
         }
     }
 
@@ -67,12 +67,12 @@ class MovieRepository @Inject constructor(
             if (response.isSuccessful) {
                 movieVideos = response.body()!!.results
             } else {
-                showToast(context)
+                showErrorToast(context)
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
-            showToast(context)
+            showErrorToast(context)
         }
     }
 
@@ -85,9 +85,9 @@ class MovieRepository @Inject constructor(
                 Log.d("movieRepo", response.errorBody()!!.string())
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
-            showToast(context)
+            showErrorToast(context)
         }
     }
 
@@ -97,12 +97,12 @@ class MovieRepository @Inject constructor(
             if (response.isSuccessful) {
                 movieCasts = response.body()!!.cast
             } else {
-                showToast(context)
+                showErrorToast(context)
             }
         } catch (e: IOException) {
-            showToast(context)
+            showErrorToast(context)
         } catch (e: HttpException) {
-            showToast(context)
+            showErrorToast(context)
         }
     }
 
